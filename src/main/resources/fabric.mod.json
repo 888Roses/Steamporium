@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "steamporium",
+  "version": "${version}",
+  "name": "Steamporium",
+  "description": "Pouring steam omw",
+  "authors": [
+    "Rosenoire",
+    "Charluk"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/steamporium/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "net.rose.steamporium.data.SteamporiumDataGenerator"
+    ],
+    "client": [
+      "net.rose.steamporium.client.SteamporiumClient"
+    ],
+    "main": [
+      "net.rose.steamporium.common.Steamporium"
+    ],
+    "cardinal-components-entity": [
+      "net.rose.steamporium.common.init.ModEntityComponents"
+    ],
+    "cardinal-components-world": [
+      "net.rose.steamporium.common.init.ModWorldComponents"
+    ],
+    "cardinal-components-block": [
+      "net.rose.steamporium.common.init.ModBlockComponents"
+    ]
+  },
+  "mixins": [
+    "steamporium.mixins.json"
+  ],
+  "custom": {
+    "cardinal-components": [
+    ]
+  },
+  "accessWidener": "steamporium.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
