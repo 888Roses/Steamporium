@@ -11,6 +11,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.rose.steamporium.common.Steamporium;
+import net.rose.steamporium.common.init.ModEffects;
 import net.rose.steamporium.common.init.ModItems;
 
 import java.util.List;
@@ -33,6 +34,8 @@ public class LangProvider extends FabricLanguageProvider {
         item(ModItems.ENDURIUM_BROADSWORD, "Endurium Broadsword");
         item(ModItems.ENDURIUM_ASPIS, "Endurium Aspis");
         item(ModItems.ENDURIUM_STEAMBOMB, "Endurium Steambomb");
+
+        this.lang.add(ModEffects.STEAMY, "Steamy");
     }
 
     private void enchantment(Enchantment enchantment, String name, String desc) {
