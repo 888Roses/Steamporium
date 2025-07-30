@@ -4,6 +4,7 @@
   "package": "net.rose.steamporium.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "steamy.EntityMixin"
   ],
   "client": [
   ],

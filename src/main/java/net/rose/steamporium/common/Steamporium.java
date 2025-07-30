@@ -2,6 +2,7 @@ package net.rose.steamporium.common;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
+import net.rose.steamporium.common.init.ModEffects;
 import net.rose.steamporium.common.init.ModItemGroups;
 import net.rose.steamporium.common.init.ModItems;
 import org.slf4j.Logger;
@@ -19,5 +20,6 @@ public class Steamporium implements ModInitializer {
     public void onInitialize() {
         ModItems.init();
         ModItemGroups.init();
+        ModEffects.init();
     }
 }
