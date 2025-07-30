@@ -10,7 +10,7 @@ import net.rose.steamporium.common.Steamporium;
 public class ModItems {
     public static final Item ENDURIUM_ALLOY = of("endurium_alloy");
     public static final Item ENDURIUM_SCRAP = of("endurium_scrap");
-    public static final Item ENDURIUM_STEAMBOMB = of("endurium_steambomb");
+    public static final Item ENDURIUM_STEAMBOMB = of("endurium_steambomb", new Item.Settings().maxCount(16));
     public static final Item ENDURIUM_ASPIS = of("endurium_aspis");
     public static final Item ENDURIUM_BROADSWORD = of("endurium_broadsword");
 
