@@ -20,5 +20,7 @@ public class ModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.ENDURIUM_BROADSWORD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ENDURIUM_ALLOY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ENDURIUM_SCRAP, Models.GENERATED);
     }
 }
