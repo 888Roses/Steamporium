@@ -1,18 +1,30 @@
 package net.rose.steamporium.common.init;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.Rarity;
 import net.rose.steamporium.common.Steamporium;
+import net.rose.steamporium.common.item.EnduriumAspisItem;
+import net.rose.steamporium.common.item.EnduriumBroadswordItem;
+import net.rose.steamporium.common.item.EnduriumSteambombItem;
 
 public class ModItems {
     public static final Item ENDURIUM_ALLOY = of("endurium_alloy");
     public static final Item ENDURIUM_SCRAP = of("endurium_scrap");
-    public static final Item ENDURIUM_STEAMBOMB = of("endurium_steambomb", new Item.Settings().maxCount(16));
-    public static final Item ENDURIUM_ASPIS = of("endurium_aspis");
-    public static final Item ENDURIUM_BROADSWORD = of("endurium_broadsword");
+    public static final Item ENDURIUM_STEAMBOMB = of(
+            "endurium_steambomb",
+            new EnduriumSteambombItem(new Item.Settings().maxCount(16))
+    );
+    public static final Item ENDURIUM_ASPIS = of(
+            "endurium_aspis",
+            new EnduriumAspisItem(new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1))
+    );
+    public static final Item ENDURIUM_BROADSWORD = of(
+            "endurium_broadsword",
+            new EnduriumBroadswordItem(new Item.Settings().rarity(Rarity.UNCOMMON))
+    );
 
     private static Item of(String name, Item item) {
         return Registry.register(

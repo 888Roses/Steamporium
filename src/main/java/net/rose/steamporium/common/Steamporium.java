@@ -5,6 +5,7 @@ import net.minecraft.util.Identifier;
 import net.rose.steamporium.common.init.ModEffects;
 import net.rose.steamporium.common.init.ModItemGroups;
 import net.rose.steamporium.common.init.ModItems;
+import net.rose.steamporium.common.init.ModToolMaterials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +19,7 @@ public class Steamporium implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ModToolMaterials.init();
         ModItems.init();
         ModItemGroups.init();
         ModEffects.init();
