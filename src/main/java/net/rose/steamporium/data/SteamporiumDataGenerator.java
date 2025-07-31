@@ -10,5 +10,6 @@ public class SteamporiumDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(LangProvider::new);
         pack.addProvider(RecipeProvider::new);
+        pack.addProvider(ModelProvider::new);
     }
 }

@@ -1,0 +1,31 @@
+{
+	"parent": "steamporium:item/endurium_broadsword",
+	"textures": {
+		"layer0": "steamporium:item/endurium_broadsword_handheld"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, 55],
+			"translation": [0, 12, -2.5],
+			"scale": [1.7, 1.7, 1.2]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, -55],
+			"translation": [0, 12, -2.5],
+			"scale": [1.7, 1.7, 1.2]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 8, 1.13],
+			"scale": [1.36, 1.36, 1]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, -25],
+			"translation": [1.13, 8, 1.13],
+			"scale": [1.36, 1.36, 1]
+		},
+		"fixed": {
+			"scale": [1.44922, 1.44922, 1.44922]
+		}
+	}
+}

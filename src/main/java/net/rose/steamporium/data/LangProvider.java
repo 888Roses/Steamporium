@@ -142,7 +142,7 @@ public class LangProvider extends FabricLanguageProvider {
      * @param desc The description of the advancement as shown to the player in the advancement tab.
      */
     private void advancement(String path, String name, String desc) {
-        lang.add("advancements.runes_of_cause." + path, name);
-        lang.add("advancements.runes_of_cause." + path + ".desc", desc);
+        lang.add("advancements.steamporium." + path, name);
+        lang.add("advancements.steamporium." + path + ".desc", desc);
     }
 }

@@ -1,6 +1,7 @@
 package net.rose.steamporium.common;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
 import net.rose.steamporium.common.init.ModEffects;
 import net.rose.steamporium.common.init.ModItemGroups;
@@ -23,5 +24,9 @@ public class Steamporium implements ModInitializer {
         ModItems.init();
         ModItemGroups.init();
         ModEffects.init();
+    }
+
+    public static ModelIdentifier modelId(String path, String variant) {
+        return new ModelIdentifier(MOD_ID, path, variant);
     }
 }
