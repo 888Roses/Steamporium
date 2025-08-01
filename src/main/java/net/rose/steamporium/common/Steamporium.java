@@ -3,10 +3,7 @@ package net.rose.steamporium.common;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
-import net.rose.steamporium.common.init.ModEffects;
-import net.rose.steamporium.common.init.ModItemGroups;
-import net.rose.steamporium.common.init.ModItems;
-import net.rose.steamporium.common.init.ModToolMaterials;
+import net.rose.steamporium.common.init.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +21,7 @@ public class Steamporium implements ModInitializer {
         ModItems.init();
         ModItemGroups.init();
         ModEffects.init();
+        ModSounds.init();
     }
 
     public static ModelIdentifier modelId(String path, String variant) {

@@ -34,6 +34,7 @@ public class LangProvider extends FabricLanguageProvider {
         item(ModItems.ENDURIUM_BROADSWORD, "Endurium Broadsword");
         item(ModItems.ENDURIUM_ASPIS, "Endurium Aspis");
         item(ModItems.ENDURIUM_STEAMBOMB, "Endurium Steambomb");
+        item(ModItems.ENDURIUM_MACE, "Endurium Mace");
 
         this.lang.add(ModEffects.STEAMY, "Steamy");
     }

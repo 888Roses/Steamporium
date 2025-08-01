@@ -24,6 +24,7 @@ public class ModItemGroups {
         entries.add(ModItems.ENDURIUM_BROADSWORD);
         entries.add(ModItems.ENDURIUM_ASPIS);
         entries.add(ModItems.ENDURIUM_STEAMBOMB);
+        entries.add(ModItems.ENDURIUM_MACE);
     }
 
     public static void init() {}

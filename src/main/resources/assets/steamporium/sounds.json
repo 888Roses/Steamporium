@@ -1,0 +1,28 @@
+{
+  "item.mace.smash_air": {
+    "category": "players",
+    "sounds": [
+      "steamporium:item/mace/smash_air1",
+      "steamporium:item/mace/smash_air2",
+      "steamporium:item/mace/smash_air3"
+    ],
+    "subtitle": "subtitles.steamporium.item.mace.smash_air"
+  },
+  "item.mace.smash_ground": {
+    "category": "players",
+    "sounds": [
+      "steamporium:item/mace/smash_ground1",
+      "steamporium:item/mace/smash_ground2",
+      "steamporium:item/mace/smash_ground3",
+      "steamporium:item/mace/smash_ground4"
+    ],
+    "subtitle": "subtitles.steamporium.item.mace.smash_ground"
+  },
+  "item.mace.smash_ground_heavy": {
+    "category": "players",
+    "sounds": [
+      "steamporium:item/mace/smash_ground_heavy"
+    ],
+    "subtitle": "subtitles.steamporium.item.mace.smash_ground_heavy"
+  }
+}

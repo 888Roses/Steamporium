@@ -37,6 +37,7 @@
   ],
   "custom": {
     "cardinal-components": [
+      "steamporium:mace"
     ]
   },
   "accessWidener": "steamporium.accesswidener",

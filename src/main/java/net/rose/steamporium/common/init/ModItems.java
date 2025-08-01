@@ -8,6 +8,7 @@ import net.minecraft.util.Rarity;
 import net.rose.steamporium.common.Steamporium;
 import net.rose.steamporium.common.item.EnduriumAspisItem;
 import net.rose.steamporium.common.item.EnduriumBroadswordItem;
+import net.rose.steamporium.common.item.EnduriumMaceItem;
 import net.rose.steamporium.common.item.EnduriumSteambombItem;
 
 public class ModItems {
@@ -25,6 +26,7 @@ public class ModItems {
             "endurium_broadsword",
             new EnduriumBroadswordItem(new Item.Settings().rarity(Rarity.UNCOMMON))
     );
+    public static final Item ENDURIUM_MACE = of("endurium_mace", new EnduriumMaceItem(new Item.Settings().rarity(Rarity.EPIC)));
 
     private static Item of(String name, Item item) {
         return Registry.register(

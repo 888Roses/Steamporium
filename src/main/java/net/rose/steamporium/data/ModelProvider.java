@@ -26,5 +26,6 @@ public class ModelProvider extends FabricModelProvider {
                 TextureMap.layer0(TextureMap.getSubId(ModItems.ENDURIUM_STEAMBOMB, "_christmas")),
                 itemModelGenerator.writer
         );
+        itemModelGenerator.register(ModItems.ENDURIUM_MACE, Models.GENERATED);
     }
 }
