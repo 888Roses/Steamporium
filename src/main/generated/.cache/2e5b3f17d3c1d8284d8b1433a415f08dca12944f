@@ -1,4 +1,6 @@
-// 1.20.1	2025-07-31T14:38:01.5929398	Steamporium/Model Definitions
-be26b703edf47331b4aef7cd613d681de0e1e151 assets\steamporium\models\item\endurium_alloy.json
-ff6fd7e5595902b515c59decda0e01bc340445e3 assets\steamporium\models\item\endurium_scrap.json
+// 1.20.1	2025-08-01T09:15:44.5647662	Steamporium/Model Definitions
 6e9a16eabc34f59504a796c9cab106bfca70b433 assets\steamporium\models\item\endurium_broadsword.json
+ff6fd7e5595902b515c59decda0e01bc340445e3 assets\steamporium\models\item\endurium_scrap.json
+90af626afabbda4e1a172e5bfb9493af989d6bac assets\steamporium\models\item\endurium_steambomb.json
+6c86e71bc93dcd3dc1c16bf90dfbcb266fde46ef assets\steamporium\models\item\endurium_steambomb_christmas.json
+be26b703edf47331b4aef7cd613d681de0e1e151 assets\steamporium\models\item\endurium_alloy.json

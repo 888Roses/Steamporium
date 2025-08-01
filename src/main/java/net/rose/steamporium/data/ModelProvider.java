@@ -2,9 +2,7 @@ package net.rose.steamporium.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
+import net.minecraft.data.client.*;
 import net.rose.steamporium.common.init.ModItems;
 
 public class ModelProvider extends FabricModelProvider {
@@ -22,5 +20,11 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ENDURIUM_BROADSWORD, Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDURIUM_ALLOY, Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDURIUM_SCRAP, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ENDURIUM_STEAMBOMB, Models.GENERATED);
+        Models.GENERATED.upload(
+                ModelIds.getItemSubModelId(ModItems.ENDURIUM_STEAMBOMB, "_christmas"),
+                TextureMap.layer0(TextureMap.getSubId(ModItems.ENDURIUM_STEAMBOMB, "_christmas")),
+                itemModelGenerator.writer
+        );
     }
 }
