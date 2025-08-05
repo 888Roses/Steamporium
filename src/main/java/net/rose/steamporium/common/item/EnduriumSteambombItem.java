@@ -32,14 +32,9 @@ public class EnduriumSteambombItem extends Item {
 
         if (world instanceof ServerWorld serverWorld) {
             final var bombEntity = new SteambombEntity(serverWorld, user);
-            bombEntity.bounceGroundDragMultiplier = 0.7F;
-            bombEntity.setOwner(user);
             bombEntity.setItem(stack);
+            bombEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0, 1.2F + (float)(user.getVelocity().length() * 0.1d), 0);
             serverWorld.spawnEntity(bombEntity);
-            final var bombPos = user.getPos().add(user.getRotationVector().multiply(0.8F));
-            bombEntity.setPosition(bombPos.x, bombPos.y, bombPos.z);
-            bombEntity.setVelocity(user.getRotationVector().add(0, 0.1, 0).normalize().multiply(0.8F));
-            bombEntity.velocityModified = true;
         }
 
         ItemUtil.decrementUnlessCreative(stack, 1, user);

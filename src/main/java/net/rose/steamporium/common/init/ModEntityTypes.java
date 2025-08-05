@@ -13,7 +13,7 @@ public class ModEntityTypes {
             "steambomb", EntityType.Builder
                     .<SteambombEntity>create(SteambombEntity::new, SpawnGroup.MISC)
                     .setDimensions(0.25F, 0.25F)
-                    .maxTrackingRange(8).trackingTickInterval(4)
+                    .maxTrackingRange(4).trackingTickInterval(10)
     );
 
     public static <T extends Entity> EntityType<T> of(String path, EntityType.Builder<T> entity) {
