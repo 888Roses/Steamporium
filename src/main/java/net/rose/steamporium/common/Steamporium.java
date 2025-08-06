@@ -23,6 +23,7 @@ public class Steamporium implements ModInitializer {
         ModEffects.init();
         ModSounds.init();
         ModEntityTypes.init();
+        ModParticles.init();
     }
 
     public static ModelIdentifier modelId(String path, String variant) {

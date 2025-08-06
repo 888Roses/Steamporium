@@ -5,6 +5,7 @@ import net.rose.steamporium.client.event.MaceFlashOverlayEvent;
 import net.rose.steamporium.client.init.ModEntityRenderers;
 import net.rose.steamporium.client.init.ModEventRegisterer;
 import net.rose.steamporium.client.init.ModItemModels;
+import net.rose.steamporium.client.init.ModParticleFactories;
 
 public class SteamporiumClient implements ClientModInitializer {
 
@@ -13,5 +14,6 @@ public class SteamporiumClient implements ClientModInitializer {
         ModItemModels.init();
         ModEventRegisterer.init();
         ModEntityRenderers.init();
+        ModParticleFactories.init();
     }
 }

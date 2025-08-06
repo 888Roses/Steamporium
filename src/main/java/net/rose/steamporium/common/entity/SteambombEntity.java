@@ -7,13 +7,20 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import net.rose.steamporium.api.util.ParticleUtil;
+import net.rose.steamporium.api.util.SoundUtil;
 import net.rose.steamporium.common.init.ModEntityTypes;
 import net.rose.steamporium.common.init.ModItems;
+import net.rose.steamporium.common.init.ModParticles;
 
 public class SteambombEntity extends ThrownItemEntity {
     public static final double EXPLOSION_KNOCK_BACK = 1.2;
@@ -82,11 +89,23 @@ public class SteambombEntity extends ThrownItemEntity {
         final var world = this.getWorld();
         if (world.isClient) return;
 
-        ParticleUtil.spawnParticles(world, ParticleTypes.EXPLOSION_EMITTER, this.getPos(), new Vec3d(0.5, 0, 0.5), 1,
-                0);
-        ParticleUtil.spawnParticles(world, ParticleTypes.EXPLOSION, this.getPos(), new Vec3d(0.5, 0, 0.5), 1, 0);
-        ParticleUtil.spawnParticles(world, ParticleTypes.SWEEP_ATTACK, this.getPos(), new Vec3d(RADIUS / 4d,
-                RADIUS / 4d, RADIUS / 4d), 40, 0);
+        final var particleRadius = Math.sqrt(RADIUS);
+        final var particleSpread = new Vec3d(particleRadius,particleRadius,particleRadius);
+        ParticleUtil.spawnParticles(
+                world, ParticleTypes.CLOUD,
+                this.getPos(), Vec3d.ZERO,
+                10, 1.2
+        );
+        ParticleUtil.spawnParticles(
+                world, ModParticles.STEAM_EXPLOSION,
+                this.getPos(), particleSpread,
+                20, 0
+        );
+        SoundUtil.playSound(
+                world, this.getPos(),
+                SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS,
+                1F, MathHelper.nextFloat(this.random, 0.9F, 1.1F)
+        );
 
         final var entities = world.getEntitiesByClass(
                 LivingEntity.class,
@@ -95,7 +114,14 @@ public class SteambombEntity extends ThrownItemEntity {
         );
         final var damageSource = this.getDamageSources().explosion(this.getOwner(), this);
         for (var entity : entities) {
-            entity.damage(damageSource, 6);
+            var raycast = world.raycast(new RaycastContext(
+                    this.getPos(), entity.getPos(),
+                    RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE,
+                    this
+            ));
+            if (raycast.getType() != HitResult.Type.MISS) continue;
+
+            entity.damage(damageSource, 15);
 
             final var knockback = getKnockBack(this.getPos(), entity.getPos(), getKnockBackResistance(entity));
             entity.setVelocity(knockback);
@@ -113,7 +139,6 @@ public class SteambombEntity extends ThrownItemEntity {
     }
 
     private Vec3d getKnockBack(Vec3d epicenter, Vec3d entityPosition, double knockbackResistance) {
-
         final var dir = entityPosition.subtract(epicenter).normalize();
         return dir.multiply(EXPLOSION_KNOCK_BACK / (1d + knockbackResistance));
     }
