@@ -13,6 +13,12 @@ import net.rose.steamporium.api.util.ItemUtil;
 import net.rose.steamporium.common.entity.SteambombEntity;
 
 public class EnduriumSteambombItem extends Item {
+    public static final double COOLDOWN_IN_SECONDS = 2;
+
+    public static int getCooldownInTicks() {
+        return (int)(COOLDOWN_IN_SECONDS*20);
+    }
+
     public EnduriumSteambombItem(Settings settings) {
         super(settings);
     }
@@ -38,6 +44,7 @@ public class EnduriumSteambombItem extends Item {
         }
 
         ItemUtil.decrementUnlessCreative(stack, 1, user);
+        user.getItemCooldownManager().set(this, getCooldownInTicks());
 
         return TypedActionResult.success(stack);
     }
