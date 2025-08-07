@@ -19,12 +19,12 @@ public class EntityMixin {
     )
     private void baseTick$steamporium(CallbackInfo ci) {
         // Doubles the damage.
-        final var entity = (Entity) (Object) this;
-        if (entity.isFireImmune()) return;
-        if (entity instanceof LivingEntity livingEntity && livingEntity.hasStatusEffect(ModEffects.STEAMY)
-                && livingEntity.isOnFire() && !livingEntity.isInLava() && livingEntity.getFireTicks() % 15 == 0) {
-            livingEntity.damage(livingEntity.getDamageSources().onFire(), 1.0f);
-        }
+        // final var entity = (Entity) (Object) this;
+        // if (entity.isFireImmune()) return;
+        // if (entity instanceof LivingEntity livingEntity && livingEntity.hasStatusEffect(ModEffects.STEAMY)
+        //         && livingEntity.isOnFire() && !livingEntity.isInLava() && livingEntity.getFireTicks() % 15 == 0) {
+        //     livingEntity.damage(livingEntity.getDamageSources().onFire(), 1.0f);
+        // }
     }
 
     @Inject(
