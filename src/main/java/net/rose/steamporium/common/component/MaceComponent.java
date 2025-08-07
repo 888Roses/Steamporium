@@ -33,7 +33,6 @@ public class MaceComponent implements CommonTickingComponent, AutoSyncedComponen
 
     @Override
     public void clientTick() {
-        this.player.sendMessage(Text.literal("Time: " + this.maceHitTime), true);
         if (this.maceHitTime > 0) {
             if (this.maceHitTime == 3) MinecraftClient.getInstance().getSoundManager().pauseAll();
             this.maceHitTime -= 1;
