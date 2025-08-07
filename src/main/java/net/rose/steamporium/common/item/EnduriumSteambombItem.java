@@ -1,5 +1,7 @@
 package net.rose.steamporium.common.item;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,7 +12,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.rose.steamporium.api.util.ItemUtil;
+import net.rose.steamporium.api.util.SoundUtil;
 import net.rose.steamporium.common.entity.SteambombEntity;
+import net.rose.steamporium.common.init.ModSounds;
 
 public class EnduriumSteambombItem extends Item {
     public static final double COOLDOWN_IN_SECONDS = 2;
@@ -42,6 +46,8 @@ public class EnduriumSteambombItem extends Item {
             bombEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0, 1.2F + (float)(user.getVelocity().length() * 0.1d), 0);
             serverWorld.spawnEntity(bombEntity);
         }
+
+        SoundUtil.playSound(world, user.getPos(), ModSounds.STEAMBOMB_THROW,user.getSoundCategory(), 0.5f, 1);
 
         ItemUtil.decrementUnlessCreative(stack, 1, user);
         user.getItemCooldownManager().set(this, getCooldownInTicks());

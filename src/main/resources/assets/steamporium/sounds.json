@@ -24,5 +24,34 @@
       "steamporium:item/mace/smash_ground_heavy"
     ],
     "subtitle": "subtitles.steamporium.item.mace.smash_ground_heavy"
+  },
+  "item.steambomb.throw": {
+    "category": "players",
+    "sounds": [
+      "steamporium:item/steambomb/throw1",
+      "steamporium:item/steambomb/throw2",
+      "steamporium:item/steambomb/throw3"
+    ],
+    "subtitle": "subtitles.steamporium.item.steambomb.throw"
+  },
+  "item.steambomb.explosion": {
+    "category": "players",
+    "sounds": [
+      "steamporium:item/steambomb/explosion1",
+      "steamporium:item/steambomb/explosion2",
+      "steamporium:item/steambomb/explosion3",
+      "steamporium:item/steambomb/explosion4"
+    ],
+    "subtitle": "subtitles.steamporium.item.steambomb.explosion"
+  },
+  "item.steambomb.bounce": {
+    "category": "players",
+    "sounds": [ "steamporium:item/steambomb/bounce" ],
+    "subtitle": "subtitles.steamporium.item.steambomb.bounce"
+  },
+  "item.steambomb.fuse_loop": {
+    "category": "players",
+    "sounds": [ "steamporium:item/steambomb/fuse_loop" ],
+    "subtitle": "subtitles.steamporium.item.steambomb.fuse_loop"
   }
 }

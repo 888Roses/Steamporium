@@ -1,5 +1,8 @@
 package net.rose.steamporium.common.entity;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -8,7 +11,6 @@ import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
@@ -21,6 +23,8 @@ import net.rose.steamporium.api.util.SoundUtil;
 import net.rose.steamporium.common.init.ModEntityTypes;
 import net.rose.steamporium.common.init.ModItems;
 import net.rose.steamporium.common.init.ModParticles;
+import net.rose.steamporium.common.init.ModSounds;
+import net.rose.steamporium.common.util.EntityAttachedSoundInstance;
 
 public class SteambombEntity extends ThrownItemEntity {
     public static final double EXPLOSION_KNOCK_BACK = 1.2;
@@ -28,6 +32,7 @@ public class SteambombEntity extends ThrownItemEntity {
     public static final double RADIUS = 7;
 
     private float drag = 1;
+    private EntityAttachedSoundInstance fuseLoop;
 
     public SteambombEntity(World world, LivingEntity owner) {
         super(ModEntityTypes.STEAMBOMB, owner, world);
@@ -41,9 +46,35 @@ public class SteambombEntity extends ThrownItemEntity {
         return Box.of(this.getPos(), radius, radius, radius);
     }
 
+    @Environment(EnvType.CLIENT)
+    private void startPlayingFuseSound() {
+        this.fuseLoop = new EntityAttachedSoundInstance(this, ModSounds.STEAMBOMB_FUSE_LOOP, this.getSoundCategory());
+        MinecraftClient.getInstance().getSoundManager().play(this.fuseLoop);
+    }
+
+    @Environment(EnvType.CLIENT)
+    private void stopPlayingFuseSound() {
+        if (this.fuseLoop == null) return;
+        MinecraftClient.getInstance().getSoundManager().stop(this.fuseLoop);
+    }
+
+    @Override
+    public void onRemoved() {
+        if (this.getWorld() != null && this.getWorld().isClient) {
+            stopPlayingFuseSound();
+        }
+
+        super.onRemoved();
+    }
+
     @Override
     public void tick() {
         super.tick();
+
+        if (this.getWorld() != null && this.getWorld().isClient && this.fuseLoop == null) {
+            startPlayingFuseSound();
+        }
+
         // Air friction.
         this.setVelocity(this.getVelocity().multiply(0.98));
 
@@ -78,6 +109,11 @@ public class SteambombEntity extends ThrownItemEntity {
                     .multiply(this.drag));
         }
 
+        SoundUtil.playSound(
+                this.getWorld(), this.getPos(), ModSounds.STEAMBOMB_BOUNCE, this.getSoundCategory(),
+                0.5F, MathHelper.nextFloat(this.random, 0.9F, 1.25F)
+        );
+
         this.drag *= 0.8F;
         if (this.drag < 0.5F) {
             explode();
@@ -90,7 +126,7 @@ public class SteambombEntity extends ThrownItemEntity {
         if (world.isClient) return;
 
         final var particleRadius = Math.sqrt(RADIUS);
-        final var particleSpread = new Vec3d(particleRadius,particleRadius,particleRadius);
+        final var particleSpread = new Vec3d(particleRadius, particleRadius, particleRadius);
         ParticleUtil.spawnParticles(
                 world, ParticleTypes.CLOUD,
                 this.getPos(), Vec3d.ZERO,
@@ -103,8 +139,8 @@ public class SteambombEntity extends ThrownItemEntity {
         );
         SoundUtil.playSound(
                 world, this.getPos(),
-                SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS,
-                1F, MathHelper.nextFloat(this.random, 0.9F, 1.1F)
+                ModSounds.STEAMBOMB_EXPLOSION, SoundCategory.PLAYERS,
+                0.75F, MathHelper.nextFloat(this.random, 0.9F, 1.1F)
         );
 
         final var entities = world.getEntitiesByClass(

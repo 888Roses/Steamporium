@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.rose.steamporium.common.Steamporium;
 import net.rose.steamporium.common.init.ModEffects;
 import net.rose.steamporium.common.init.ModItems;
+import net.rose.steamporium.common.init.ModSounds;
 
 import java.util.List;
 
@@ -33,8 +34,13 @@ public class LangProvider extends FabricLanguageProvider {
         item(ModItems.ENDURIUM_SCRAP, "Endurium Scrap");
         item(ModItems.ENDURIUM_BROADSWORD, "Endurium Broadsword");
         item(ModItems.ENDURIUM_ASPIS, "Endurium Aspis");
-        item(ModItems.ENDURIUM_STEAMBOMB, "Endurium Steambomb");
         item(ModItems.ENDURIUM_MACE, "Endurium Mace");
+
+        item(ModItems.ENDURIUM_STEAMBOMB, "Endurium Steambomb");
+        sound(ModSounds.STEAMBOMB_THROW, "Endurium Steambomb Thrown");
+        sound(ModSounds.STEAMBOMB_EXPLOSION, "Endurium Steambomb Explodes");
+        sound(ModSounds.STEAMBOMB_BOUNCE, "Endurium Steambomb Bounces");
+        sound(ModSounds.STEAMBOMB_FUSE_LOOP, "Endurium Steambomb Fuse Burning");
 
         this.lang.add(ModEffects.STEAMY, "Steamy");
     }
