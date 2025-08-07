@@ -22,7 +22,7 @@ public class EntityMixin {
         final var entity = (Entity) (Object) this;
         if (entity.isFireImmune()) return;
         if (entity instanceof LivingEntity livingEntity && livingEntity.hasStatusEffect(ModEffects.STEAMY)
-                && livingEntity.isOnFire() && !livingEntity.isInLava() && livingEntity.getFireTicks() % 10 == 0) {
+                && livingEntity.isOnFire() && !livingEntity.isInLava() && livingEntity.getFireTicks() % 15 == 0) {
             livingEntity.damage(livingEntity.getDamageSources().onFire(), 1.0f);
         }
     }

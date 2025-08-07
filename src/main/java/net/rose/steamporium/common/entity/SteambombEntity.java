@@ -156,7 +156,7 @@ public class SteambombEntity extends ThrownItemEntity {
             ));
             if (raycast.getType() != HitResult.Type.MISS) continue;
 
-            entity.damage(damageSource, 15);
+            entity.damage(damageSource, 7);
             entity.addStatusEffect(new StatusEffectInstance(ModEffects.STEAMY, 200, 0), this.getOwner());
 
             final var knockback = getKnockBack(this.getPos(), entity.getPos(), getKnockBackResistance(entity));
