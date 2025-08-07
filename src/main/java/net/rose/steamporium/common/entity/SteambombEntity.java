@@ -7,10 +7,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.ModStatus;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
@@ -20,10 +22,7 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import net.rose.steamporium.api.util.ParticleUtil;
 import net.rose.steamporium.api.util.SoundUtil;
-import net.rose.steamporium.common.init.ModEntityTypes;
-import net.rose.steamporium.common.init.ModItems;
-import net.rose.steamporium.common.init.ModParticles;
-import net.rose.steamporium.common.init.ModSounds;
+import net.rose.steamporium.common.init.*;
 import net.rose.steamporium.common.util.EntityAttachedSoundInstance;
 
 public class SteambombEntity extends ThrownItemEntity {
@@ -158,6 +157,7 @@ public class SteambombEntity extends ThrownItemEntity {
             if (raycast.getType() != HitResult.Type.MISS) continue;
 
             entity.damage(damageSource, 15);
+            entity.addStatusEffect(new StatusEffectInstance(ModEffects.STEAMY, 200, 0), this.getOwner());
 
             final var knockback = getKnockBack(this.getPos(), entity.getPos(), getKnockBackResistance(entity));
             entity.setVelocity(knockback);
